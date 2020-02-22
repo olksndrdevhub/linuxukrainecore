@@ -44,7 +44,7 @@ ________________________________________________________________________________
                                                 Fix BUG[8]
                                                 App go on beta testing stage!
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-4       beta_version        0.2.0b              Bugfixing.                                                                                                                               In Progress
+4       beta_version        0.2.0b              Bugfix.                                                                                                                               In Progress
                                                 Centering images on posts preview.
                                                 Fix BUG[7]
                                                 Make some improve with navbar.
