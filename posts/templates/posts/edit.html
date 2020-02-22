@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Редагувати пост | MWB
+{% endblock title %}
+
+{% block content_title %}
+<div class="title">
+    <h3 class="editposttitle">Редагувати пост</h3>
+</div>
+{% endblock content_title %}
+
+{% block content_index %}
+    <div class="form_edit">
+        <form action="{{ url_for('posts.edit_post', slug=post.slug) }}" method="POST">
+            <div class="tags_part">
+                <div class="choose_tags">
+                    {{ form.tags.label(class='control-label') }}
+                    {{ form.tags(class='form-control', size='1') }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.title.label(class='control-label') }}
+                {{ form.title(class='form-control') }}
+                {{ form.description.label(class='control-label') }}
+                {{ form.description(class='form-control') }}
+                {{ form.body.label(class='control-label') }}
+                {{ form.body(class='form-control',only_inpyt=True, rows=5) }}
+                {{ form.body(only_preview=True) }}
+                {{ form.image.label(class='control-label') }}
+                {{ form.image(class='form-control') }}
+            </div>
+            <div class="button_edit_post">
+                <button type="submit" class="btn btn-success">Зберегти</button>
+            </div>
+
+        </form>
+    </div>
+{% endblock content_index %}

@@ -1,0 +1,14 @@
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField, StringField, SelectMultipleField
+from wtforms.fields.html5 import DateTimeLocalField
+from wtforms.validators import DataRequired
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+
+
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired])
+    body = TextAreaField('Body', validators=[DataRequired])
+    image = FileField('Add image', validators=[DataRequired])
+
+    tags = SelectMultipleField('Add tags', choices=[('python', 'programming')])
+

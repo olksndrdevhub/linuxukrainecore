@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}
+    Статті | MWB
+{% endblock title %}
+{% block content_title %}
+    <div class="title">
+        <h3 class="tagpostslist">Новини світу Windows</h3>
+    </div>
+{% endblock content_title %}
+{% block content_index %}
+<div class="tagpostslist">
+    {% for post in pages.items %}
+        <div class="post">
+            <a href="{{ url_for('posts.post_detail', slug=post.slug) }}">
+                <div class="c_b">
+                  <div class="post_img" style="background-image: url({{ url_for('static', filename='images/posts_img/'+ post.img_filename ) }});"></div>
+                
+                    <div class="card-body">
+                      <h4 class="card-text">{{ post.title }}</h4>
+                      <p class="card-text">{{ post.description }}</p>
+                      <hr>
+                      </a>
+                      <div class="post_prop">
+                        <p class="data_create">Створено: {{ post.created.strftime("%d/%m/%Y") }}</p>
+                        <p class="author"><a class="author_link" href="#">Автор: {{ post.author }}</a></p>
+                    </div>
+                    
+                      {% for tag in post.tags %}
+                          <a href="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge badge-primary">{{ tag.name }}</span></a>
+                      {% endfor %}
+                    </div>
+                </div>
+              
+        </div>
+
+    {% endfor %}
+</div>
+
+<div class="pag">
+  <nav class="navpag">
+    <ul class="pagination">
+      <li {% if not pages.has_prev %} class="page-item disabled" {% endif %} >
+        <a class="page-link" href="./articles?page={{ pages.prev_num }}">Попередня</a>
+      </li>
+
+      {% for page in pages.iter_pages() %}
+        <li {% if page == pages.page %} class="page-item active" aria-current="page" {% endif %} >
+            <a class="page-link" href="./articles?page={{ page }}"> {{  page }} <span class="sr-only">(current)</span></a>
+        </li>
+      {% endfor %}
+      
+      <li {% if not pages.has_next %} class="page-item disabled" {% endif %} >
+        <a class="page-link" href="./articles?page={{ pages.next_num }}">Наступна</a>
+      </li>
+    </ul>
+  </nav>
+
+</div>
+{% endblock content_index %}
+    

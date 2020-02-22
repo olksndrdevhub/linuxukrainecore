@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Додати тег | MWB
+{% endblock title %}
+
+{% block content_title %}
+<div class="container" style="margin-top: 3%;">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        {{message}}
+        </div>
+      {% endfor %}
+      {% endif %}
+    {% endwith %}
+    
+    {% block body %}{% endblock %}
+    </div>
+<div class="title">
+    <h3 class="createtagtitle">Додати новий тег</h3>
+</div>
+{% endblock content_title %}
+
+{% block content_index %}
+    <div class="form_create">
+        <form action="{{ url_for('posts.create_tag') }}" method="POST" enctype="multipart/form-data">
+            <div class="tags_part">
+                <div class="create_tag">
+                    {{ tag_form.add_tag.label(class='control-label') }}
+                    <div class="input_tag_create">
+                        {{ tag_form.add_tag(class='form-control tag_input') }}
+                        {{ tag_form.submit_tag(class='btn btn-success cr_tag_button') }}
+                    </div>
+                </div>
+            </div>
+        </form> 
+    </div>
+{% endblock content_index %}

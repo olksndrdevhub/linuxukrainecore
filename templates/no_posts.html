@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    My Windows Blog
+
+{% endblock title %}
+
+{% block content_index %}
+
+
+<div class="maincontent">
+    <div class="col1">
+        <div class="title" style="height: 500px;"><h3 class="s_title">Дописів ще немає...
+        {% if current_user.has_role('admin') %}
+            <br>Але ви можете їх додати!
+        {% endif %}
+        </h3></div>
+    </div>
+    <div class="sidebar" id="hidden">
+        
+        <div class="social_title"><h4 class="sidebar_h4">МИ В СОЦМЕРЕЖАХ</h4></div>
+        <div class="social_links">
+            <a href="https://www.instagram.com/alxndr.rmnk/" target="blank"><span class="badge"> <span><img src="{{ url_for('static',  filename='images/instico.png') }}" alt="instico"></span> Instagram</span></a>
+            <a href="https://www.facebook.com/sromanuk3" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/facico.png') }}" alt="faceico"></span> Facebook</span></a>
+            <a href="https://twitter.com/alxndr_rmnk" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/twiico.png') }}" alt="twittico"></span> Twitter</span></a>
+            <a href="https://t.me/Alxndr_rmnk" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/telgrico.png') }}" alt="ghico"></span> Telegram</span></a>
+            <a href="#" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/youico.png') }}" alt="ytico"></span> YouTube</span></a>
+            <a href="https://github.com/AlxndrDevHub" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/gitico.png') }}" alt="instico"></span> GitHub</span></a>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content_index %}

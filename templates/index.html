@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    My Windows Blog
+
+{% endblock title %}
+{% block content_title %}
+        
+                {% if q %}
+                <div class="title">
+                    <h3 class="s_title">Нічого не знайдено за запитом "{{ q }}"<br> Ви можете перейти на <a href=" {{ url_for('index') }} ">Головну</a></h3>
+                </div>
+                <hr>
+                {% else %}
+                <div class="title">
+                    <h3 class="s_title">{{ alert2 }}</h3>
+                </div>
+                {% endif %}
+
+{% endblock content_title %}
+
+
+{% block content_index %}
+
+
+<div class="maincontent">
+    <div class="col1">
+        <div class="posts">
+                {% for post in pages.items %}
+                    
+                    <div class="c_b">
+                        <a href="{{ url_for('posts.post_detail', slug=post.slug) }}">
+                            <div class="post_img" style="background-image: url({{ url_for('static', filename='images/posts_img/'+ post.img_filename ) }});"></div>
+                            <!-- <img src="{{ url_for('static', filename='images/posts_img/'+ post.img_filename ) }}" class="card-img-top" alt="..."> -->
+                            <div class="card-body">
+                                <h3 class="card-text">{{ post.title }}</h3>
+                                <p class="card-text">{{ post.description }}</p>
+                                <hr>
+                                </a>
+                                <div class="post_prop">
+                                    <p class="data_create">Створено: {{ post.created.strftime("%d/%m/%Y") }}</p>
+                                    <p class="author"><a class="author_link" href="#">Автор: {{ post.author }}</a></p>
+                                </div>
+                                
+                                {% for tag in post.tags %}
+                                    <a href="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge badge-primary">{{ tag.name }}</span></a>
+                                {% endfor %}
+                            </div>
+                        
+                    </div>
+                    
+                {% endfor %}
+        </div>
+
+    </div>
+    <div class="sidebar" id="hidden">
+        <div class="bcc_row2">
+            <h4 class="sidebar_h4">ТЕГИ</h4>
+        </div>
+        <div class="bcc_subrow2">
+            <p>
+                <div class="tags">
+                    {% for tag in tags %}
+                        <a href="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge badge-primary">{{ tag.name }}</span></a>
+                    {% endfor %}
+                </div>
+            </p>
+        </div>
+        
+        <div class="social_title"><h4 class="sidebar_h4">МИ В СОЦМЕРЕЖАХ</h4></div>
+        <div class="social_links">
+            <a href="https://www.instagram.com/alxndr.rmnk/" target="blank"><span class="badge"> <span><img src="{{ url_for('static',  filename='images/instico.png') }}" alt="instico"></span> Instagram</span></a>
+            <a href="https://www.facebook.com/sromanuk3" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/facico.png') }}" alt="faceico"></span> Facebook</span></a>
+            <a href="https://twitter.com/alxndr_rmnk" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/twiico.png') }}" alt="twittico"></span> Twitter</span></a>
+            <a href="https://t.me/Alxndr_rmnk" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/telgrico.png') }}" alt="ghico"></span> Telegram</span></a>
+            <a href="#" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/youico.png') }}" alt="ytico"></span> YouTube</span></a>
+            <a href="https://github.com/AlxndrDevHub" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/gitico.png') }}" alt="instico"></span> GitHub</span></a>
+        </div>
+        <div class="last_guides">
+            <h4 class="sidebar_h4">ОСТАННІ ГАЙДИ</h4>
+            {% for guide in last_guides %}
+            <a href="{{ url_for('posts.post_detail', slug=guide.slug) }}">
+                <div class="c_b">
+                    <div class="post_img_sidebar" style="background-image: url({{ url_for('static', filename='images/posts_img/'+ guide.img_filename ) }});"></div>
+                    
+                        <div class="card-body">
+                        <h3 class="card-text">{{ guide.title }}</h3>
+                        <p class="card-text">{{ guide.description }}</p>
+                        <p class="data_create">Created {{ guide.created.strftime("%d/%m/%Y") }}</p>
+                        </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+<div class="pag">
+    <nav class="navpag">
+        <ul class="pagination">
+            <li {% if not pages.has_prev %} class="page-item disabled" {% endif %} >
+                <a class="page-link" href="./?page={{ pages.prev_num }}">Попередня</a>
+            </li>
+
+            {% for page in pages.iter_pages() %}
+                <li {% if page == pages.page %} class="page-item active" aria-current="page" {% endif %} >
+                    <a class="page-link" href="./?page={{ page }}"> {{  page }} <span class="sr-only">(current)</span></a>
+                </li>
+            {% endfor %}
+            
+            <li {% if not pages.has_next %} class="page-item disabled" {% endif %} >
+                <a class="page-link" href="./?page={{ pages.next_num }}">Наступна</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+{% endblock content_index %}
