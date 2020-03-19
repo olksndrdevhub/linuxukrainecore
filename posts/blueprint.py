@@ -49,7 +49,7 @@ def create_post():
         form.image.data.save(img_url)
         post = Post(title=title, description=description, body=body, img_filename=filename, tags=tags)
         db.session.add(post)
-        post.set_author(current_user.login)
+        post.set_author(current_user.name+' '+current_user.secname)
         db.session.commit()
         post_id = post.id
         print('Post ID: '+str(post_id))
