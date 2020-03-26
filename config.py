@@ -5,7 +5,7 @@ import os.path as op
 class Configuration(object):
     basedir = os.path.abspath(os.path.dirname(__file__))
     directory_img = basedir + '/static/images/posts_img/'
-    DEBUG=True
+    DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
