@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Контакти | MWB
+{% endblock title %}
+{% block content_title %}
+    <div class="title">
+        <h3 class="contacts_title">Ви можете зв'язатися з нами!</h3>
+        <hr>
+    </div>
+{% endblock content_title %}
+{% block content_index %}
+<div class="contacts">
+    <div class="socials">
+        <div class="title_col">
+            <h4>Ми в соцмережах:</h4>
+        </div>
+        <a href="#" target="blank"><span class="badge"> <span><img src="{{ url_for('static',  filename='images/instico.png') }}" alt="instico"></span> Instagram</span></a>
+        <a href="#" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/facico.png') }}" alt="faceico"></span> Facebook</span></a>
+        <a href="#" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/twiico.png') }}" alt="twittico"></span> Twitter</span></a>
+        <a href="#" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/youico.png') }}" alt="ytico"></span> YouTube</span></a>
+        <a href="#" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/gitico.png') }}" alt="instico"></span> GitHub</span></a>
+    </div>
+    <div class="messengers">
+        <div class="title_col">
+            <h4>Напишіть нам:</h4>
+        </div>
+        <a href="#" target="blank"><span class="badge"><span><img src="{{ url_for('static',  filename='images/telgrico.png') }}" alt="ghico"></span> Telegram</span></a>
+    </div>
+    
+</div>
+
+<div class="email"><h4 class="title_col">Або зв'яжіться з нами поштою: </h4><a href="mailto:">mywindowsblog@xample.com</a></div>
+
+{% endblock content_index %}
