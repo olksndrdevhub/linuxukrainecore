@@ -1,0 +1,56 @@
+!OPEN IN FULL MODE!
+-------------------
+*This is Versions Documentation for app 'My Windows Blog'
+*'My Windows Blog' app build with Flask using Python
+*Versions Documentation for 'My Windows Blog' app was created when app take status 'alpha_version' and has version 0.1.0a
+*Bug reporting in file 'bug_report.txt'. Here links to bug is 'BUG[number]'
+
+-------------------------------------------------------------------------------------------------
+-rules of versions naming-
+
+*Version naming is [app status] + [version code]
+* [app status] - alpha_version (a), beta_version(b), pre_reliase_version(pr), reliase_version(r);
+* [version code] - 3 digit and 1 lower case sumbol in end:
+* first digit - will take '1' after reliase,
+* second digit - change value up after 'big' updates in app,
+* third digit chanhe value up after minor updates in app,
+* 1 lower case sumbol means app status.
+-------------------------------------------------------------------------------------------------
+
+____________________________________________________________________________________________________________________________________________________________________________________________________________
+№      |app status          |app version       |description                                                                                        |type of changes                     Status
+____________________________________________________________________________________________________________________________________________________________________________________________________________
+1       alpha_version       0.1.0a              All main part in app works good. Have some bug with frontend design. Only two JavaScript            Big                                  Reliase
+                                                modules loading from Network.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2       alpha_version       0.1.1a              Try add author of post name to every post. Must recreate database((( after creating new database    Minor                                Reliase
+                                                find BUG[3].
+                                                BUG[3] was fixed by adding a nev template, that render if we have any posts or
+                                                needed tags.
+                                                Finally add rendering author to every post!
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3       alpha_version       0.1.2a              Work with CSS of post_detail page.                                                                  Big                                  Reliase
+                                                Make some changes in structure of app, make section 'News', which replace 'Articles'.
+                                                Work with adding a button 'Delete post' to 'post_detail' page.
+                                                Add button 'Delete' to every post.
+                                                Still work with CSS.
+                                                Fix BUG[5].
+                                                Add function to upload images, whitch in future will be used when author will adding
+                                                images in Markdown.
+                                                Fix CSS issue on add post page with rendering Marcdown syntax.
+                                                Fix CSS issue with margins on 'news', 'programs', 'guides' pages.
+                                                Fix BUG[4]
+                                                Fix BUG[6]
+                                                Fix BUG[8]
+                                                App go on beta testing stage!
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4        beta_version       0.2.0b              Bugfix.                                                                                            Minor                                 Reliase
+                                                Centering images on posts preview.
+                                                Fix BUG[7]
+                                                Make some improve with navbar.
+						Finally deploy app on Heroku!
+						Move from Sqlite3 to Postgresql on Heroku
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5	beta_version	    0.3.0b		Move from Sqlite3 to Postgresql on Heroku							   Minor				 Reliase	
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6	beta_version	    						
